@@ -1,0 +1,60 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "User Access Management",
+      "description": "Manage users accesses to new features",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/feature?email={email}&featureName={featureName}": {
+            "get": {
+                "tags": [
+                    "Api"
+                ],
+                "description": "Check if user has access to feature",
+                "parameters":[  
+                    {  
+                        "in":"query",
+                        "name":"featureName",
+                        "description":"name of the feature",
+                        "required":true
+                    },
+                    {  
+                        "in":"query",
+                        "name":"email",
+                        "description":"email of the user",
+                        "required":true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/feature": {
+            "post": {
+                "tags": [
+                    "Api"
+                ],
+                "description": "Toggle user's access to feature",
+                "parameters": [
+                    {  
+                        "in":"body",
+                        "name":"Request Body",
+                        "type": "object",
+                        "required":true,
+                        "default": "{ \n \"featureName\": \"test\", \n \"email\": \"test@test.com\", \n \"enable\": true}"
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    }
+}
